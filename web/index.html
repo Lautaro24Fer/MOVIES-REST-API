@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probar API rest</title>
+    <script>
+        let html
+        fetch("http://localhost:3000/movies")
+            .then(result => result.json())
+            .then(movies => {
+                html = movies[0].map(movie => {
+                    return `
+                    <article data-id="${movie.id}">
+                        <h2>${movie.title}</h2>
+                        <p>${movie.description}</p>
+                    </article>
+                    `
+                }).join("")
+            })
+            .then(() => {
+                document.querySelector("main").innerHTML = html
+            })
+    </script>
+</head>
+
+<body>
+    <main>
+
+    </main>
+</body>
+<style>
+    article {
+        border: 1px solid black;
+        padding: 1em;
+    }
+</style>
+
+</html>

@@ -1,0 +1,48 @@
+###
+
+GET http://localhost:3000 HTTP/1.1
+
+###
+
+GET http://localhost:3000/movies HTTP/1.1
+
+###
+
+GET http://localhost:3000/movies?genre=DRAMA HTTP/1.1
+
+###POST REQUEST
+POST http://localhost:3000/movies HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Nueve Reinas",
+    "director": "Gallardo",
+    "releaseYear": 1984,
+    "genre": "Action, suspense",
+    "rating": {
+      "imdb": 9.3,
+      "rottenTomatoes": 91
+    },
+    "description": "No tiene descripcion"
+}
+
+###POST REQUEST NO VALIDA
+POST http://localhost:3000/movies HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Titulo no valido",
+    "director": ""
+}
+
+###PATH REQUEST (ACTUALIZAR PELICULA MEDIANTE ID)
+
+PATCH http://localhost:3000/movies/006e958b-d644-4d00-b500-cf5f8a1ff8ee
+Content-Type: application/json
+
+{
+  "title": "El secreto de sus ojos",
+  "director": "Quintero"
+}
+
+
